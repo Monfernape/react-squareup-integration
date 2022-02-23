@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import "./styles.css";
 
+const APPLICATION_ID = "{SOME_RANDOM_APPLICATION_ID}";
+const LOCATION_ID = "{LOCATION_ID}";
+
 export default function App() {
   const [card, setCard] = useState(null);
 
@@ -31,10 +34,7 @@ const SquareChild = ({ onCardInitialization }) => {
       throw new Error("Square.js failed to load properly");
     }
 
-    const payments = await window.Square.payments(
-      "sandbox-sq0idb-22jt6MUKrHwmkMhDdTwZfw",
-      "LM2R4YM9XDFNX"
-    );
+    const payments = await window.Square.payments(APPLICATION_ID, LOCATION_ID);
     initializeCard(payments);
   };
 
